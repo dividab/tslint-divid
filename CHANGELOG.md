@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## v1.0.0 - 2017-05-14
 ### Added
-- Initial release
+- Moved rules over from [tslint-immutable](https://github.com/jonaskello/tslint-immutable) v3.4.0.
 
 [Unreleased]: https://github.com/jonaskello/tslint-immutable/compare/v1.0.1...master
 [v1.0.1]: https://github.com/jonaskello/tslint-immutable/compare/v1.0.0...v1.0.1
