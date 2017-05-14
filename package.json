@@ -1,6 +1,6 @@
 {
   "name": "tslint-divid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TSLint rules to disable mutation in TypeScript.",
   "main": "tslint-divid.json",
   "repository": {
