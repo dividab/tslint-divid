@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## v1.0.1 - 2017-05-14
+## [v1.0.1] - 2017-05-14
 ### Added
 - Initial release to npm.
 
