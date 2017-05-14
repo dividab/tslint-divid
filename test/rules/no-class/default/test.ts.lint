@@ -1,6 +1,0 @@
-var x = 0;
-
-class Foo {}
-~~~~~~~~~~~~ [failure]
-
-[failure]: Unexpected class, use functions not classes.
