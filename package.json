@@ -1,0 +1,35 @@
+{
+  "name": "tslint-divid",
+  "version": "1.0.0",
+  "description": "TSLint rules to disable mutation in TypeScript.",
+  "main": "tslint-divid.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonaskello/tslint-divid.git"
+  },
+  "keywords": [
+    "tslint",
+    "divid"
+  ],
+  "author": "Jonas Kello",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jonaskello/tslint-divid/issues"
+  },
+  "homepage": "https://github.com/jonaskello/tslint-divid#readme",
+  "devDependencies": {
+    "shelljs": "^0.7.5",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "build": "rm -rf rules && tsc -p tsconfig.json",
+    "lint": "tslint './src/**/*.ts{,x}'",
+    "test": "yarn build && yarn test:rules",
+    "test:rules": "./scripts/test-rules.sh",
+    "publish:major": "npm run build && node scripts/publish.js major",
+    "publish:minor": "npm run build && node scripts/publish.js minor",
+    "publish:patch": "npm run build && node scripts/publish.js patch"
+  }
+}
