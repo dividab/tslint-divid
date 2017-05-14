@@ -1,6 +1,6 @@
 {
   "name": "tslint-divid",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TSLint rules used in some projects at Divid.",
   "main": "tslint-divid.json",
   "repository": {
