@@ -25,7 +25,7 @@ class NoImportsWalker extends Lint.RuleWalker {
       throw new Error("Missing relative containment path");
     }
 
-    this.containment = path.resolve(process.cwd(), containmentRelative);
+    this.containment = path.resolve(containmentRelative);
   }
   public visitImportDeclaration(node: ts.ImportDeclaration): void {
     const sourceFileName = node.getSourceFile().fileName;
@@ -42,7 +42,7 @@ class NoImportsWalker extends Lint.RuleWalker {
     }
 
     const stepsUp = importText.split("/").filter(s => s === "..");
-    const resultParent = path.resolve(
+    const resultParent = path.join(
       this.containment,
       ...stepsUp.map(s => `${s}/`)
     );
