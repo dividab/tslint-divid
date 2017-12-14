@@ -1,2 +1,2 @@
-import { kalle } from "../../../nisse/index"
-                      ~~~~~~~~~~~~~~~~~~~~~~ [Import violating limit-relative-import rule]
+import { kalle } from "../../shared-lib/src/nisse/index"
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Import violating limit-relative-import rule]
