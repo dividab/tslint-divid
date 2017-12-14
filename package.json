@@ -1,13 +1,16 @@
 {
   "name": "tslint-divid",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "TSLint rules used in some projects at Divid.",
   "main": "tslint-divid.json",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jonaskello/tslint-divid.git"
   },
-  "keywords": ["tslint", "divid"],
+  "keywords": [
+    "tslint",
+    "divid"
+  ],
   "author": "Jonas Kello",
   "license": "Apache-2.0",
   "bugs": {
@@ -25,8 +28,7 @@
     "build": "rm -rf rules && tsc -p tsconfig.json",
     "lint": "tslint './src/**/*.ts{,x}'",
     "test": "yarn build && tslint --test test/rules/**/*",
-    "test:work":
-      "yarn build && tslint --test test/rules/limit-relative-import/**/*",
+    "test:work": "yarn build && tslint --test test/rules/limit-relative-import/**/*",
     "publish:major": "npm run build && node scripts/publish.js major",
     "publish:minor": "npm run build && node scripts/publish.js minor",
     "publish:patch": "npm run build && node scripts/publish.js patch"
