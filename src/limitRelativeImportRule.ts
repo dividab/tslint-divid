@@ -3,56 +3,58 @@ import * as Lint from "tslint";
 import * as path from "path";
 
 export class Rule extends Lint.Rules.AbstractRule {
+  private containment: string = "./";
   constructor(options: Lint.IOptions) {
     super(options);
-  }
-  public static FAILURE_STRING = "Import violating limit-relative-import rule";
-
-  public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-    return this.applyWithWalker(
-      new NoImportsWalker(sourceFile, this.getOptions())
-    );
-  }
-}
-
-// The walker takes care of all the work.
-class NoImportsWalker extends Lint.RuleWalker {
-  private containment: string = "./";
-  constructor(sourceFile: ts.SourceFile, options: Lint.IOptions) {
-    super(sourceFile, options);
     const containmentRelative = options.ruleArguments[0] as string | undefined;
     if (!containmentRelative) {
       throw new Error("Missing relative containment path");
     }
-
     this.containment = path.resolve(containmentRelative);
   }
-  public visitImportDeclaration(node: ts.ImportDeclaration): void {
+  public static FAILURE_STRING = "Import violating limit-relative-import rule";
+
+  public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
+    return this.applyWithFunction(sourceFile, (ctx: Lint.WalkContext<void>) => {
+      checkNode(ctx, this.containment);
+    });
+  }
+}
+
+function checkNode(ctx: Lint.WalkContext<void>, containment: string): void {
+  return ts.forEachChild(ctx.sourceFile, cb);
+
+  function cb(node: ts.Node): void {
+    if (node.kind !== ts.SyntaxKind.ImportDeclaration) {
+      return;
+    }
+
+    const importDeclaration = node as ts.ImportDeclaration;
+
     const sourceFileName = node.getSourceFile().fileName;
-    const importText = node.moduleSpecifier
+    const importText = importDeclaration.moduleSpecifier
       .getText()
       .replace(/^"(.+?)"$/, "$1");
 
     if (
       !importText.startsWith("../") ||
-      !isInside(this.containment, sourceFileName)
+      !isInside(containment, sourceFileName)
     ) {
-      super.visitImportDeclaration(node);
       return;
     }
 
     const stepsUp = importText.split("/").filter(s => s === "..");
     const resultParent = path.join(sourceFileName, ...stepsUp.map(s => s));
-    /*     console.log("------------------------------------------------");
-    console.log("containment", this.containment);
+    /* console.log("------------------------------------------------");
+    console.log("containment", containment);
     console.log("sourceFileName", sourceFileName);
     console.log("resultParent", resultParent); */
-    if (resultParent.length <= this.containment.length) {
-      this.addFailureAtNode(node.moduleSpecifier, Rule.FAILURE_STRING);
+    if (resultParent.length <= containment.length) {
+      ctx.addFailureAtNode(
+        importDeclaration.moduleSpecifier,
+        Rule.FAILURE_STRING
+      );
     }
-
-    // call the base version of this visitor to actually parse this node
-    super.visitImportDeclaration(node);
   }
 }
 
