@@ -42,12 +42,12 @@ class NoImportsWalker extends Lint.RuleWalker {
     }
 
     const stepsUp = importText.split("/").filter(s => s === "..");
-    const resultParent = path.join(
-      this.containment,
-      ...stepsUp.map(s => `${s}/`)
-    );
-
-    if (resultParent.length < this.containment.length) {
+    const resultParent = path.join(sourceFileName, ...stepsUp.map(s => s));
+    /*     console.log("------------------------------------------------");
+    console.log("containment", this.containment);
+    console.log("sourceFileName", sourceFileName);
+    console.log("resultParent", resultParent); */
+    if (resultParent.length <= this.containment.length) {
       this.addFailureAtNode(node.moduleSpecifier, Rule.FAILURE_STRING);
     }
 

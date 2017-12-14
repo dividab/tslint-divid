@@ -1,9 +1,6 @@
 {
   "rulesDirectory": ["../../../../rules"],
   "rules": {
-    "limit-relative-import": [
-      true,
-      "./test/rules/limit-relative-import/default/"
-    ]
+    "limit-relative-import": [true, "./test/rules/limit-relative-import/"]
   }
 }
