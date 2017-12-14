@@ -31,6 +31,30 @@ See the [example](#sample-configuration-file) tslint.json file for configuration
 
 ECMAScript modules does not have a concept of a library that can span multiple files and share internal members. If you have a set of files that forms an library, and they need to be able to call each other internally without exposing members to other files outside the library set, this rule can be useful.
 
+### limit-relative-import
+
+Limits how far up in the tree that a module can import other modules with relatives path. Encourages the use of paths to have more control which modules that can be imported.
+
+The containtment path is resolved relative to `process.cwd()`
+
+```js
+// tsconfig.json
+{
+  "shared-lib/*": ["shared-lib/src/*"]
+}
+```
+
+```typescript
+// filePath: /root/my-lib/packages/client/src/bar.ts
+// containment: ./packages/
+
+// Not ok
+import { foo } from "../../shared-lib/src/foo/";
+
+// Ok
+import { foo } from "shared-lib/foo/";
+```
+
 ### no-arguments
 
 Disallows use of the `arguments` keyword.
@@ -60,7 +84,7 @@ inferface Foo {
 
 Here's a sample TSLint configuration file (tslint.json) that activates all the rules:
 
-```javascript
+```typescript
 {
   "extends": [
     "tslint-divid"
@@ -75,7 +99,8 @@ Here's a sample TSLint configuration file (tslint.json) that activates all the r
       "containmentPath": "path/to/libs",
       "allowedExternalFileNames": ["index"],
       "disallowedInternalFileNames": ["index"]
-    }]
+    },
+    "limit-relative-import": [true, "./path/relative/to/cwd"]]
 
   }
 }
