@@ -33,7 +33,7 @@ class ImportsContainmentWalker extends Lint.RuleWalker {
       disallowedInternalFileNames
     }: Options = myOptions;
     const sourceFileRelativePath = getSourceFilePathRelativeToContainmentPath(
-      this.getSourceFile().path,
+      this.getSourceFile().fileName,
       containmentPath
     );
     // Check if the file resides under the containment path
