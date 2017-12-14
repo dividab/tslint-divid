@@ -7,10 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/jonaskello/tslint-divid.git"
   },
-  "keywords": [
-    "tslint",
-    "divid"
-  ],
+  "keywords": ["tslint", "divid"],
   "author": "Jonas Kello",
   "license": "Apache-2.0",
   "bugs": {
@@ -26,8 +23,7 @@
     "tsc": "tsc",
     "build": "rm -rf rules && tsc -p tsconfig.json",
     "lint": "tslint './src/**/*.ts{,x}'",
-    "test": "yarn build && yarn test:rules",
-    "test:rules": "./scripts/test-rules.sh",
+    "test": "tslint --test test/rules/**/*",
     "publish:major": "npm run build && node scripts/publish.js major",
     "publish:minor": "npm run build && node scripts/publish.js minor",
     "publish:patch": "npm run build && node scripts/publish.js patch"
