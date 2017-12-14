@@ -1,0 +1,2 @@
+import { kalle } from "../../../nisse/index"
+                      ~~~~~~~~~~~~~~~~~~~~~~ [Import violating limit-relative-import rule]

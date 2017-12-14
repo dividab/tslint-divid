@@ -25,6 +25,8 @@
     "build": "rm -rf rules && tsc -p tsconfig.json",
     "lint": "tslint './src/**/*.ts{,x}'",
     "test": "yarn build && tslint --test test/rules/**/*",
+    "test:work":
+      "yarn build && tslint --test test/rules/limit-relative-import/**/*",
     "publish:major": "npm run build && node scripts/publish.js major",
     "publish:minor": "npm run build && node scripts/publish.js minor",
     "publish:patch": "npm run build && node scripts/publish.js patch"
