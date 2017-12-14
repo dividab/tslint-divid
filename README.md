@@ -23,6 +23,7 @@ See the [example](#sample-configuration-file) tslint.json file for configuration
 ## Rules
 
 * [import-containment](#import-containment)
+* [limit-relative-import](#limit-relative-import)
 * [no-arguments](#no-arguments)
 * [no-label](#no-label)
 * [no-semicolon-interface](#no-semicolon-interface)
