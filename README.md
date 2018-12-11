@@ -18,15 +18,15 @@ See the [example](#sample-configuration-file) tslint.json file for configuration
 
 ## Compability
 
-* tslint-divid is compatible with tslint 5.x.x.
+- tslint-divid is compatible with tslint 5.x.x.
 
 ## Rules
 
-* [import-containment](#import-containment)
-* [limit-relative-import](#limit-relative-import)
-* [no-arguments](#no-arguments)
-* [no-label](#no-label)
-* [no-semicolon-interface](#no-semicolon-interface)
+- [import-containment](#import-containment)
+- [limit-relative-import](#limit-relative-import)
+- [no-arguments](#no-arguments)
+- [no-label](#no-label)
+- [no-semicolon-interface](#no-semicolon-interface)
 
 ### import-containment
 
@@ -109,7 +109,7 @@ Here's a sample TSLint configuration file (tslint.json) that activates all the r
 
 [version-image]: https://img.shields.io/npm/v/tslint-divid.svg?style=flat
 [version-url]: https://www.npmjs.com/package/tslint-divid
-[travis-image]: https://travis-ci.org/jonaskello/tslint-divid.svg?branch=master&style=flat
-[travis-url]: https://travis-ci.org/jonaskello/tslint-divid
+[travis-image]: https://travis-ci.com/jonaskello/tslint-divid.svg?branch=master&style=flat
+[travis-url]: https://travis-ci.com/jonaskello/tslint-divid
 [license-image]: https://img.shields.io/github/license/jonaskello/tslint-divid.svg?style=flat
 [license-url]: https://opensource.org/licenses/MIT
